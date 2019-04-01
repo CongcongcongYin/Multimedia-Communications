@@ -1,0 +1,13 @@
+function[ps]=psnr(i0,i1)
+[m,n]=size(i0); 
+b0=double(i0);
+b1=double(i1);
+sum=0.0;
+a=255;
+for i=1:m
+    for j=1:n
+        sum=sum+(b0(i,j)-b1(i,j))^2;%2幅图像对应位置相减求平方  累加
+    end
+end
+p=(m*n*(a^2))/sum;
+ps=10*log10(p);
